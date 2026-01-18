@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineStream | Movie Recommendations</title>
+    <link rel="stylesheet" href="movierecommendationsystem.css">
+
+<body>
+
+    <header>
+        <div class="logo">Cinetream</div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search movies...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Discover Your Next Favorite</h1>
+            <p>Explore thousands of movies and TV shows.</p>
+        </section>
+
+        <div class="loader" id="loader"></div>
+        <div class="movie-grid" id="movieGrid">
+        </div>
+
+        <div class="load-more-container">
+            <button id="loadMoreBtn" class="load-more-btn">Load More Movies</button>
+        </div>
+    </div>
+    
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <img src="" alt="Movie Poster" class="modal-poster" id="modalPoster">
+            <div class="modal-info">
+                <h2 class="modal-title" id="modalTitle">Movie Title</h2>
+                <div class="modal-meta">
+                    <span id="modalYear">2023</span>
+                    <span id="modalGenre">Action, Sci-Fi</span>
+                    <span id="modalRuntime">120 min</span>
+                </div>
+                <div class="modal-rating" id="modalRating">IMDb: 8.5</div>
+                <p class="modal-plot" id="modalPlot">
+                    Plot description goes here...
+                </p>
+                <div id="modalActors" style="color: #b3b3b3; margin-top: 20px;">
+                    <strong>Cast:</strong> <span>Actor 1, Actor 2</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="movierecommendationsystem.js"></script>
+</body>
+
+</html>
