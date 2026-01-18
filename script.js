@@ -1,5 +1,12 @@
 const API_KEY = 'ea7e1c0b';
 const BASE_URL = 'https://www.omdbapi.com/';
+function getSecurePoster(url) {
+    if (!url || url === "N/A") {
+        return "https://via.placeholder.com/300x450?text=No+Poster";
+    }
+    return url.replace("http://", "https://");
+}
+
 
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
@@ -78,8 +85,7 @@ async function fetchMovies(query, page = 1) {
             }
             displayMovies(data.Search);
 
-
-            const displayedResults = page * 12;
+            const displayedResults = page * 10;
             if (displayedResults < totalResults) {
                 loadMoreBtn.style.display = 'block';
             } else {
@@ -110,7 +116,7 @@ function displayMovies(movies) {
         card.addEventListener('click', () => fetchMovieDetails(movie.imdbID));
 
 
-        const posterSrc = (movie.Poster && movie.Poster !== "N/A") ? movie.Poster : "https://via.placeholder.com/300x450?text=No+Poster";
+        const posterSrc = getSecurePoster(movie.Poster);
 
         card.innerHTML = `
             <img src="${posterSrc}" alt="${movie.Title}" class="movie-poster">
@@ -138,7 +144,8 @@ async function fetchMovieDetails(id) {
 }
 
 function openModal(movie) {
-    modalPoster.src = (movie.Poster && movie.Poster !== "N/A") ? movie.Poster : "https://via.placeholder.com/300x450?text=No+Poster";
+   
+   modalPoster.src = getSecurePoster(movie.Poster);
     modalTitle.textContent = movie.Title;
     modalYear.textContent = movie.Year;
     modalGenre.textContent = movie.Genre;
